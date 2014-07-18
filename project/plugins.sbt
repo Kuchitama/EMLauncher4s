@@ -13,8 +13,5 @@ resolvers ++= Seq(
     Classpaths.typesafeReleases
 )
 
-// Use the Play sbt plugin for Play projects
-addSbtPlugin("com.github.mpeltonen" % "sbt-idea" % "1.6.0")
-
 addSbtPlugin("com.typesafe.sbt" % "sbt-scalariform" % "1.2.1")
 
