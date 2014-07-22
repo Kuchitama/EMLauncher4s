@@ -19,16 +19,20 @@ object BuildSettings {
 
 object EMLauncher4SBuild extends Build {
   import BuildSettings._
-  
+
+  val testDependencies = Seq(
+    "org.scalatest"           %% "scalatest"       % "2.2.0"   % "test"
+  )
   
   lazy val main = Project (
     id = "emlaunhcer4s",
     base = file(".")
-  ).settings(
+  ).settings(buildSettings: _*).settings(
     libraryDependencies ++= Seq(
-      "net.databinder.dispatch" %% "dispatch-core" % "0.11.0",
-      "org.scalatest" %% "scalatest" % "2.0" % "test"
-    )
+      "org.skinny-framework" %% "skinny-http-client" % "1.1.8",
+      "org.json4s"    %% "json4s-jackson"     % "3.2.10"  % "compile",
+      "org.json4s"    %% "json4s-ext"         % "3.2.10"  % "compile"
+    ) ++ testDependencies
   ).settings(
     scalariformSettings : _*
   ).settings(ScalariformKeys.preferences := FormattingPreferences()
